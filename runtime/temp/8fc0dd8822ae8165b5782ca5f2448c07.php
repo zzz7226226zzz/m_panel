@@ -1,4 +1,4 @@
-<?php /*a:1:{s:59:"C:\wamp64\www\site\application\mpanel\view\index\index.html";i:1548065990;}*/ ?>
+<?php /*a:1:{s:59:"C:\wamp64\www\site\application\mpanel\view\index\index.html";i:1548148539;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,8 +12,30 @@
         <script src="js/uikit-icons.min.js"></script>
     </head>
     <body>
-        <div class="uk-flex uk-flex-center uk-width-1-1 uk-height-1-1 indexbg" uk-grid>
-            <div class="uk-card uk-card-default uk-card-body uk-margin-left">Item 3</div>
+        <div class="uk-position-center" uk-grid>
+            <div class="uk-card uk-card-default uk-card-body uk-margin-left">
+                <form>
+                    <h3 class="uk-card-title">MPP</h3>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Username">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="passwd" placeholder="Password">
+                    </div>
+                    <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
+                        <div>
+                            <a class="uk-link-muted" href="#">Sign up</a>
+                        </div>
+                        <div>
+                            <button class="uk-button uk-button-default">Login</button>
+                        </div>
+                    </div>
+                    <div class="uk-margin"></div>
+                    <div class="uk-flex uk-flex-right">
+                        <a class="uk-link-muted" href="#">Forgot password?</a>
+                    </div>
+                <form>
+            </div>
         </div>
     </body>
 	<script type="text/javascript">
