@@ -1,9 +1,8 @@
 <?php
-namespace app\mpanel\controller;
+namespace app\index\controller;
 use think\Controller;
-use Config;
 
-class Index extends Controller {
+class User extends Controller {
     public function index() {
         return $this->fetch();
     }
