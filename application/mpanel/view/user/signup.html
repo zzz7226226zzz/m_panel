@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign up</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../public/css/uikit.min.css" />
+        <script src="../../public/js/jquery.min.js"></script>
+        <script src="../../public/js/uikit.min.js"></script>
+        <script src="../../public/js/uikit-icons.min.js"></script>
+    </head>
+    <body>
+        <div class="uk-position-center" uk-grid>
+            <div class="uk-card uk-card-default uk-card-body uk-width-medium  uk-visible@m">
+                <form action="{:url('mpanel/user/register');}" method="post">
+                    <h3 class="uk-card-title">Sign up</h3>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="password" name="repassword" placeholder="RePassword">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" name="code" placeholder="Code">
+                    </div>
+                    <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
+                        <div>
+                            <button class="uk-button uk-button-default">Sign up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="uk-width-medium uk-hidden@m">
+                <form action="{:url('mpanel/user/register');}" method="post">
+                    <h3 class="uk-card-title">Sign up</h3>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="password" name="repassword" placeholder="RePassword">
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" name="code" placeholder="Code">
+                    </div>
+                    <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
+                        <div>
+                            <button class="uk-button uk-button-default">Sign up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+	<script type="text/javascript">
+    
+	</script>
+</html>

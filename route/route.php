@@ -13,7 +13,10 @@ Route::get('think', function () {
     return 'hello,ThinkPHP5!';
 });
 
-Route::get('register', 'index/user/register');
+Route::get('login', 'mpanel/user/login');
+Route::get('signup', 'mpanel/user/signup');
+Route::post('register', 'mpanel/user/register');
+Route::post('verify_account', 'mpanel/user/verify_account');
 
 return [
 
