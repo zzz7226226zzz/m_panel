@@ -31,7 +31,7 @@ class Tools{
             case 'GB':
                 $size = $num * pow(1024, 3);
                 break;
-            case 'PB':
+            case 'TB':
                 $size = $num * pow(1024, 4);
                 break;
         }

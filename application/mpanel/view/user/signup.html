@@ -4,60 +4,66 @@
         <title>Sign up</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../../public/css/uikit.min.css" />
-        <script src="../../public/js/jquery.min.js"></script>
-        <script src="../../public/js/uikit.min.js"></script>
-        <script src="../../public/js/uikit-icons.min.js"></script>
+        <link rel="stylesheet" href="__PUBLIC__/css/uikit.min.css" />
+        <script src="__PUBLIC__/js/jquery.min.js"></script>
+        <script src="__PUBLIC__/js/uikit.min.js"></script>
+        <script src="__PUBLIC__/js/uikit-icons.min.js"></script>
+        <script src="__PUBLIC__/js/common.js"></script>
     </head>
     <body>
         <div class="uk-position-center" uk-grid>
-            <div class="uk-card uk-card-default uk-card-body uk-width-medium  uk-visible@m">
-                <form action="{:url('mpanel/user/register');}" method="post">
-                    <h3 class="uk-card-title">Sign up</h3>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="text" name="username" placeholder="Username">
+            <div>
+                <h3 class="uk-card-title">Sign up</h3>
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" name="username" placeholder="Username" id="username">
+                </div>
+                <div class="uk-margin">
+                    <input class="uk-input" type="password" name="password" placeholder="Password" id="password">
+                </div>
+                <div class="uk-margin">
+                    <input class="uk-input" type="password" name="repassword" placeholder="RePassword" id="repassword">
+                </div>
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" name="code" placeholder="Code" id="code">
+                </div>
+                <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
+                    <div>
+                        <button class="uk-button uk-button-default">Sign up</button>
                     </div>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="password" name="password" placeholder="Password">
-                    </div>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="password" name="repassword" placeholder="RePassword">
-                    </div>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="text" name="code" placeholder="Code">
-                    </div>
-                    <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
-                        <div>
-                            <button class="uk-button uk-button-default">Sign up</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="uk-width-medium uk-hidden@m">
-                <form action="{:url('mpanel/user/register');}" method="post">
-                    <h3 class="uk-card-title">Sign up</h3>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="text" name="username" placeholder="Username">
-                    </div>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="password" name="password" placeholder="Password">
-                    </div>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="password" name="repassword" placeholder="RePassword">
-                    </div>
-                    <div class="uk-margin">
-                        <input class="uk-input" type="text" name="code" placeholder="Code">
-                    </div>
-                    <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
-                        <div>
-                            <button class="uk-button uk-button-default">Sign up</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </body>
 	<script type="text/javascript">
-    
+        (function () {
+            $('#login').on('click', function() {
+                var username = $( '#username' ).val();
+                var password = $( '#password' ).val();
+                var repassword = $( '#repassword' ).val();
+                var code = $( '#code' ).val();
+                var request = $.ajax({
+                  url: '{:url("mpanel/user/verify_account");}',
+                  method: 'POST',
+                  data: {username: username, password: password, repassword: repassword, code: code},
+                  dataType: 'html'
+                });
+                
+                request.done(function(msg) {
+                    if(msg == '"LOL"') {
+                        window.location.href="{:url('mpanel/index/index');}"; 
+                    } else {
+                        write_alert(msg);
+                    }
+                });
+                 
+                request.fail(function(jqXHR, textStatus) {
+                    write_alert('Request failed: ' + textStatus);
+                });
+            });
+        }());
+        
+        function write_alert(msg) {
+            UIkit.modal.dialog('<p class="uk-modal-body">' + msg + '</p>');
+        }
 	</script>
 </html>

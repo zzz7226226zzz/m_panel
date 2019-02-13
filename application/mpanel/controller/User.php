@@ -21,7 +21,7 @@ class User extends Controller {
     public function verify_account() {
         $user = UserModel::where('name', Request::param()['username'])->find();
         if($user != NULL && password_verify(Request::param()['password'], $user->pass)) {
-            $this->set_login();
+            $this->set_login($user);
             return 'LOL';
         } else {
             return 'WRONG USERNAME OR PASSWORD';
@@ -62,20 +62,27 @@ class User extends Controller {
         $user->reg_by = $code->author;
         if($user->save()) {
             $code_controller->discard($user->code);
-            $this->set_login();
+            $this->set_login($user);
             return 'LOL';
         } else {
             return 'MPP: UNKNOW ERROR';
         }
     }
     
-    private function set_login() {
+    private function set_login($user) {
+        session(null);
         $token = Tools::rand_string(10);
-        Cookie::set('token', $token , 259200);
+        Cookie::set('token', $token , 86400);
         Session::set('token', $token);
+        Session::set('user', $user->id);
+        Session::set('invite', $user->reg_by);
     }
     
     static public function is_login() {
         return Session::has('token') && Cookie::has('token') && !empty(Session::get('token')) && cookie('token') == session('token');
+    }
+    
+    static public function invite_user() {
+        return Session::get('invite');
     }
 }

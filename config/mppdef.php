@@ -1,6 +1,8 @@
 <?php
 //面板参数
 return [
+    //网站名
+    'sitename' => 'BBBVPN',
     //用户默认加密方式
     'method' => 'chacha20-ietf',
     //用户默认协议
