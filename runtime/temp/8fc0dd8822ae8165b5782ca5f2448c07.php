@@ -1,8 +1,8 @@
-<?php /*a:2:{s:65:"C:\wamp64\www\site\application\mpanel\view\index\node_manage.html";i:1550052357;s:58:"C:\wamp64\www\site\application\mpanel\view\index\base.html";i:1550120835;}*/ ?>
+<?php /*a:2:{s:59:"C:\wamp64\www\site\application\mpanel\view\index\index.html";i:1550048544;s:58:"C:\wamp64\www\site\application\mpanel\view\index\base.html";i:1550138329;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MPP</title>
+        <title><?php echo config('mppdef.sitename');; ?></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/site/public/css/uikit.min.css" />
@@ -45,28 +45,26 @@
             </div>
         </div>
         <div class="uk-margin"></div>
-        <div class="uk-container">
-            <div class="" uk-grid>
-                <div class="uk-card uk-card-default uk-card-body uk-width-small uk-visible@m">
-                    <ul class="uk-nav-default uk-nav-center" uk-nav>  
-                        <?php if($invite == 0): ?>
-                            <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">节点管理</a></li>
-                            <li><a href="<?php echo url('mpanel/index/announcement_manage');; ?>">公告管理</a></li>
-                            <li><a href="<?php echo url('mpanel/index/user_list');; ?>">用户列表</a></li>
-                            <li class="uk-nav-divider"></li>
-                        <?php endif; ?>
-                        <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">个人中心</a></li>
-                        <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">节点列表</a></li>
-                        <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">邀请管理</a></li>
-                        <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">软件下载</a></li>
-                        <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">问题反馈</a></li>
+        <div class="" uk-grid>
+            <div class="uk-card uk-card-default uk-card-body uk-width-small uk-visible@m">
+                <ul class="uk-nav-default uk-nav-center" uk-nav>  
+                    <?php if($invite == 0): ?>
+                        <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">节点管理</a></li>
+                        <li><a href="<?php echo url('mpanel/index/announcement_manage');; ?>">公告管理</a></li>
+                        <li><a href="<?php echo url('mpanel/index/user_list');; ?>">用户列表</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
-                    </ul>
-                </div>
-                <div class="uk-card uk-card-default uk-width-expand">
-                    <h3 class="uk-card-title">1</h3>
-                </div>
+                    <?php endif; ?>
+                    <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">个人中心</a></li>
+                    <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">节点列表</a></li>
+                    <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">邀请管理</a></li>
+                    <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">软件下载</a></li>
+                    <li><a href="<?php echo url('mpanel/index/node_manage');; ?>">问题反馈</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
+                </ul>
+            </div>
+            <div class="uk-card uk-card-default uk-width-expand">
+                <h3 class="uk-card-title">1</h3>
             </div>
         </div>
     </body>

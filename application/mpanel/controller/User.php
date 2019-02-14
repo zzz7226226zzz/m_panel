@@ -75,14 +75,13 @@ class User extends Controller {
         Cookie::set('token', $token , 86400);
         Session::set('token', $token);
         Session::set('user', $user->id);
-        Session::set('invite', $user->reg_by);
     }
     
     static public function is_login() {
         return Session::has('token') && Cookie::has('token') && !empty(Session::get('token')) && cookie('token') == session('token');
     }
-    
-    static public function invite_user() {
-        return Session::get('invite');
+
+    static public function fast_user() {
+        return UserModel::where('id', Session::get('user'))->find();
     }
 }

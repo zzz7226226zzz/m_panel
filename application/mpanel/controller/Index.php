@@ -10,7 +10,8 @@ class Index extends Controller {
     public function __construct() {
         parent::__construct();
         $this->assign('sitename', config('mppdef.sitename'));
-        $this->assign('invite', User::invite_user());
+        $this->assign('invite', User::fast_user()->reg_by);
+        $this->assign('username', User::fast_user()->name);
     }
     
     public function index() {
