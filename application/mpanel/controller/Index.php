@@ -21,4 +21,8 @@ class Index extends Controller {
     public function node_manage() {
         return $this->fetch();
     }
+    
+    public function node_add() {
+        return $this->fetch();
+    }
 }

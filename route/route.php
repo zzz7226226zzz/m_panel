@@ -17,6 +17,7 @@ Route::get('index', 'mpanel/index/index');
 Route::get('login', 'mpanel/user/login');
 Route::get('signup', 'mpanel/user/signup');
 Route::get('node_manage', 'mpanel/index/node_manage');
+Route::get('node_add', 'mpanel/index/node_add');
 Route::get('announcement_manage', 'mpanel/index/announcement_manage');
 Route::post('register', 'mpanel/user/register');
 Route::post('verify_account', 'mpanel/user/verify_account');

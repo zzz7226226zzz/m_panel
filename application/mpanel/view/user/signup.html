@@ -28,7 +28,7 @@
                 </div>
                 <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
                     <div>
-                        <button class="uk-button uk-button-default">Sign up</button>
+                        <button id="signup" class="uk-button uk-button-default">Sign up</button>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
     </body>
 	<script type="text/javascript">
         (function () {
-            $('#login').on('click', function() {
+            $('#signup').on('click', function() {
                 var username = $( '#username' ).val();
                 var password = $( '#password' ).val();
                 var repassword = $( '#repassword' ).val();

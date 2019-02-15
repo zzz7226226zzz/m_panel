@@ -28,42 +28,42 @@
                     <li><a>{$username}</a></li>
                     {if $invite == 0}
                         <li class="uk-nav-divider"></li>
-                        <li><a href="{:url('mpanel/index/node_manage');}">节点管理</a></li>
-                        <li><a href="{:url('mpanel/index/announcement_manage');}">公告管理</a></li>
-                        <li><a href="{:url('mpanel/index/user_list');}">用户列表</a></li>
+                        <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">节点管理</a></li>
+                        <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/announcement_manage');}">公告管理</a></li>
+                        <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/user_list');}">用户列表</a></li>
                     {/if}
                     <li class="uk-nav-divider"></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">个人中心</a></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">节点列表</a></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">邀请管理</a></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">软件下载</a></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">问题反馈</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">个人中心</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">节点列表</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">邀请管理</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">软件下载</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
                     <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
         </div>
         <div class="uk-margin"></div>
-        <div class="" uk-grid>
-            <div class="uk-card uk-card-default uk-card-body uk-width-small uk-visible@m">
+        <div class="uk-margin-remove-left" uk-grid>
+            <div class="uk-card uk-card-body uk-width-small uk-visible@m">
                 <ul class="uk-nav-default uk-nav-center" uk-nav>  
                     {if $invite == 0}
-                        <li><a href="{:url('mpanel/index/node_manage');}">节点管理</a></li>
-                        <li><a href="{:url('mpanel/index/announcement_manage');}">公告管理</a></li>
-                        <li><a href="{:url('mpanel/index/user_list');}">用户列表</a></li>
+                        <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">节点管理</a></li>
+                        <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/announcement_manage');}">公告管理</a></li>
+                        <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/user_list');}">用户列表</a></li>
                         <li class="uk-nav-divider"></li>
                     {/if}
-                    <li><a href="{:url('mpanel/index/node_manage');}">个人中心</a></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">节点列表</a></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">邀请管理</a></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">软件下载</a></li>
-                    <li><a href="{:url('mpanel/index/node_manage');}">问题反馈</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">个人中心</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">节点列表</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">邀请管理</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">软件下载</a></li>
+                    <li><a class="uk-button uk-button-text" href="{:url('mpanel/index/node_manage');}">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
+                    <li><a class="uk-button uk-button-text" href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
             <div class="uk-card uk-card-default uk-width-expand">
-                <h3 class="uk-card-title">1</h3>
+                {block name="main"}1{/block}
             </div>
         </div>
     </body>

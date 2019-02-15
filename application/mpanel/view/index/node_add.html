@@ -1,0 +1,53 @@
+{extend name="index/base" /}
+{block name="main"}
+    <div class="uk-container uk-container-expand">
+        <div class="uk-card">
+            <div class="uk-card-header">
+                <h3 class="uk-card-title">节点添加</h3>
+            </div>
+            <div class="uk-card-body">
+                <div class="uk-form-horizontal uk-margin-large">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">节点名称</label>
+                        
+                        <input class="uk-input" type="text" name="name" placeholder="例：美国节点1" id="name">
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">节点地址</label>
+                        <input class="uk-input" type="text" name="server" placeholder="域名或ip" id="server">
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">节点ip</label>
+                        <input class="uk-input" type="text" name="ip" placeholder="不填则自动获取" id="ip">
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">节点介绍</label>
+                        <input class="uk-input" type="text" name="info" placeholder="节点信息描述" id="info">
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">节点状态</label>
+                        <div class="uk-form-controls uk-form-controls-text">
+                            <label><input class="uk-radio" type="radio" name="enable" checked="true">启用</label><br>
+                            <label><input class="uk-radio" type="radio" name="enable">关闭</label>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">流量比率</label>
+                        <input class="uk-input" type="num" name="traffic_rate" placeholder="用户实际使用流量与服务器统计流量的比例，默认为1" id="traffic_rate">
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">节点排序</label>
+                        <input class="uk-input" type="num" name="traffic_rate" placeholder="前后台显示顺序，1-99的数字，默认为0" id="traffic_rate">
+                    </div>
+                    <div class="uk-card-footer">
+                        <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
+                            <div>
+                                <button class="uk-button uk-button-default">添加</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
