@@ -1,0 +1,94 @@
+{extend name="index/base" /}
+{block name="main"}
+    <div class="uk-container uk-container-expand">
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <h3 class="uk-card-title">软件下载</h3>
+            </div>
+            <div class="uk-card-body">
+                <ul uk-accordion> 
+                    <li>
+                        <a class="uk-accordion-title" href="#">ShadowSocksR与ShadowSocks的区别</a>
+                        <div class="uk-accordion-content">
+                            <p>ShadowSocksR多了一个混淆(obfs)功能，可以将访问地址伪装为别的网站，（有可能？）会提升一定的安全性，速度比ShadowSocks要慢一点（但是影响不大，速度主要还是取决于节点线路）</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="uk-accordion-title" href="#">Windows</a>
+                        <div class="uk-accordion-content">
+                            <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade connect: .switcher-container">
+                                <li><a href="#">ShadowSocksR</a></li>
+                                <li><a href="#">ShadowSocks</a></li>
+                            </ul>
+                            
+                            <ul class="uk-switcher uk-margin switcher-container">
+                                <li>
+                                    <a class="uk-button uk-button-default" href="__PUBLIC__/software/pcssr.7z" target="view_window">下载</a>
+                                </li>
+                                <li>
+                                    <a class="uk-button uk-button-default" href="__PUBLIC__/software/pcss.rar" target="view_window">下载</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="uk-accordion-title" href="#">Android</a>
+                        <div class="uk-accordion-content">
+                            <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade connect: .switcher-container">
+                                <li><a href="#">ShadowSocksR</a></li>
+                                <li><a href="#">ShadowSocks</a></li>
+                            </ul>
+                            
+                            <ul class="uk-switcher uk-margin switcher-container">
+                                <li>
+                                    <a class="uk-button uk-button-default" href="__PUBLIC__/software/ssr.apk" target="view_window">下载</a>
+                                </li>
+                                <li>
+                                    <a class="uk-button uk-button-default" href="__PUBLIC__/software/ss.apk" target="view_window">下载</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="uk-accordion-title" href="#">IOS</a>
+                        <div class="uk-accordion-content">
+                                <p>国区大多软件都被下架，站长也没有苹果手机做测试，下面的软件仅供参考，如果有美服账号，推荐使用Shadowrocket</p>
+                            <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade connect: .switcher-container">
+                                <li><a href="#">ShadowSocksR</a></li>
+                                <li><a href="#">ShadowSocks</a></li>
+                            </ul>
+                            
+                            <ul class="uk-switcher uk-margin switcher-container">
+                                <li>
+                                    <a class="uk-button uk-button-default" href="https://itunes.apple.com/cn/app/id1260141606" target="view_window">下载</a>
+                                </li>
+                                <li>
+                                    <a class="uk-button uk-button-default" href="https://itunes.apple.com/cn/app/id1260141606" target="view_window">下载</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="uk-accordion-title" href="#">MAC</a>
+                        <div class="uk-accordion-content">
+                            <p>站长没有MAC，只能贴两个github链接了</p>
+                            <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade connect: .switcher-container">
+                                <li><a href="#">ShadowSocksR</a></li>
+                                <li><a href="#">ShadowSocks</a></li>
+                            </ul>
+                            
+                            <ul class="uk-switcher uk-margin switcher-container">
+                                <li>
+                                    <a class="uk-button uk-button-default" href="https://github.com/ShadowsocksR-Live/ssrMac" target="view_window">下载</a>
+                                </li>
+                                <li>
+                                    <a class="uk-button uk-button-default" href="https://github.com/yangfeicheung/Shadowsocks-X" target="view_window">下载</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{/block}

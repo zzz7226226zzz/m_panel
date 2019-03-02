@@ -1,4 +1,4 @@
-<?php /*a:3:{s:77:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\code_list.html";i:1551544075;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;s:76:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\component\page.html";i:1550332029;}*/ ?>
+<?php /*a:3:{s:77:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\code_list.html";i:1551551562;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;s:76:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\component\page.html";i:1550332029;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -73,7 +73,24 @@
             <div class="uk-card-body">
                 <button class="uk-button uk-button-default" id="code_add">创建邀请码</button>
                 <br /><br />
-                <button class="uk-button uk-button-default" id="update_code_head">修改邀请码头</button>
+                <button class="uk-button uk-button-default" href="#modal-center" uk-toggle>修改邀请码头</button>
+                <div id="modal-center" class="uk-flex-top" uk-modal>
+                    <div class="uk-modal-dialog  uk-margin-auto-vertical">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header">
+                            <h2 class="uk-modal-title">修改邀请码头</h2>
+                        </div>
+                        <div class="uk-modal-body">
+                            <div class="uk-margin">
+                                <input class="uk-input" type="text" placeholder="1-5位中英文或数字" id="head">
+                            </div>
+                        </div>
+                        <div class="uk-modal-footer uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                            <button class="uk-button uk-button-primary" type="button" id="update_code_head">Save</button>
+                        </div>
+                    </div>
+                </div>
                 <a class="uk-link-muted">现在头部：<span id="now_code_head"><?php echo htmlentities($user['code_head']); ?></span></a>
                 <div class="uk-margin"></div>
                 <div class="uk-overflow-auto">
@@ -114,11 +131,11 @@
         <?php if(($page - 3) != 2): ?>
             <li class="uk-disabled"><span>...</span></li>
         <?php endif; ?>
-    <?php endif; $__FOR_START_248131263__=$page - 3;$__FOR_END_248131263__=$page;for($i=$__FOR_START_248131263__;$i < $__FOR_END_248131263__;$i+=1){ if($i > 0): ?>
+    <?php endif; $__FOR_START_2050067695__=$page - 3;$__FOR_END_2050067695__=$page;for($i=$__FOR_START_2050067695__;$i < $__FOR_END_2050067695__;$i+=1){ if($i > 0): ?>
             <li><a href="<?php echo url('mpanel/index/code_manage', ['page'=>$i]); ?>"><?php echo htmlentities($i); ?></a></li>
         <?php endif; } ?>
     <li class="uk-active"><span><?php echo htmlentities($page); ?></span></li>
-    <?php $__FOR_START_458419492__=$page + 1;$__FOR_END_458419492__=$page + 4;for($i=$__FOR_START_458419492__;$i < $__FOR_END_458419492__;$i+=1){ if($i <= $count): ?>
+    <?php $__FOR_START_705791077__=$page + 1;$__FOR_END_705791077__=$page + 4;for($i=$__FOR_START_705791077__;$i < $__FOR_END_705791077__;$i+=1){ if($i <= $count): ?>
             <li><a href="<?php echo url('mpanel/index/code_manage', ['page'=>$i]); ?>"><?php echo htmlentities($i); ?></a></li>
         <?php endif; } if($count > ($page + 3)): if(($page + 3) != ($count - 1)): ?>
             <li class="uk-disabled"><span>...</span></li>
@@ -166,6 +183,30 @@
                 request.done(function(msg) {
                     if(msg == '"LOL"') {
                         location.reload();
+                    } else {
+                        write_alert(msg);
+                    }
+                });
+                 
+                request.fail(function(jqXHR, textStatus) {
+                    write_alert('Request failed: ' + textStatus);
+                });
+            });
+
+            
+            $('#update_code_head').on('click', function() {
+                head = $('#head').val();
+                var request = $.ajax({
+                  url: '<?php echo url("mpanel/user/update_code_head"); ?>',
+                  method: 'POST',
+                  data: {head: head},
+                  dataType: 'html'
+                });
+                
+                request.done(function(msg) {
+                    if(msg == '"LOL"') {
+                        $('#now_code_head').html(head);
+                        UIkit.modal('#modal-center').hide();
                     } else {
                         write_alert(msg);
                     }

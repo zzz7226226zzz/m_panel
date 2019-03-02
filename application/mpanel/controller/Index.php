@@ -100,4 +100,14 @@ class Index extends Controller {
         $this->assign('page', $page);
         return $this->fetch();
     }
+
+    public function announcement_list() {
+        $annos = Announcement::all()->all();
+        $this->assign('annos', $annos);
+        return $this->fetch();
+    }
+
+    public function download() {
+        return $this->fetch();
+    }
 }

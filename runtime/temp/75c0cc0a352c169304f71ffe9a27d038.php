@@ -1,4 +1,4 @@
-<?php /*a:2:{s:73:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\index.html";i:1551541349;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;}*/ ?>
+<?php /*a:2:{s:73:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\index.html";i:1551551347;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -83,7 +83,7 @@
                 </ul>
             </div>
             <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text" >更多公告</a>
+                <a href="<?php echo url('mpanel/index/announcement_list');; ?>" class="uk-button uk-button-text" >更多公告</a>
             </div>
         </div>
         <br />
@@ -107,7 +107,7 @@
                     <div><?php echo htmlentities($user['enable_code']); ?></div>
                 </div>
                 <div class="uk-grid-small" uk-grid>
-                    <div class="uk-width-expand" uk-leader>上次代理在线时间</div>
+                    <div class="uk-width-expand" uk-leader>上次在线时间</div>
                     <div><?php echo htmlentities($user['pox_last_ol']); ?></div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<?php /*a:3:{s:79:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\user_manage.html";i:1551511156;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511004;s:76:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\component\page.html";i:1550332029;}*/ ?>
+<?php /*a:3:{s:79:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\user_manage.html";i:1551511233;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;s:76:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\component\page.html";i:1550332029;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,10 +35,10 @@
                     <?php endif; ?>
                     <li class="uk-nav-divider"></li>
                     <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/index');; ?>">个人中心</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">节点列表</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">邀请管理</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">软件下载</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">问题反馈</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_list');; ?>">节点列表</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/code_list');; ?>">邀请管理</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
+                    <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
                     <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
@@ -55,15 +55,15 @@
                         <li class="uk-nav-divider"></li>
                     <?php endif; ?>
                     <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/index');; ?>">个人中心</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">节点列表</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">邀请管理</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">软件下载</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">问题反馈</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_list');; ?>">节点列表</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/code_list');; ?>">邀请管理</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
+                    <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
                     <li><a class="uk-button uk-button-text" href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
-            <div class="uk-width-expand">
+            <div class="uk-width-expand uk-padding-remove-left">
                 
     <div class="uk-container uk-container-expand">
         <div class="uk-card uk-card-default">
@@ -135,11 +135,11 @@
         <?php if(($page - 3) != 2): ?>
             <li class="uk-disabled"><span>...</span></li>
         <?php endif; ?>
-    <?php endif; $__FOR_START_366353428__=$page - 3;$__FOR_END_366353428__=$page;for($i=$__FOR_START_366353428__;$i < $__FOR_END_366353428__;$i+=1){ if($i > 0): ?>
+    <?php endif; $__FOR_START_1536800171__=$page - 3;$__FOR_END_1536800171__=$page;for($i=$__FOR_START_1536800171__;$i < $__FOR_END_1536800171__;$i+=1){ if($i > 0): ?>
             <li><a href="<?php echo url('mpanel/index/user_manage', ['page'=>$i]); ?>"><?php echo htmlentities($i); ?></a></li>
         <?php endif; } ?>
     <li class="uk-active"><span><?php echo htmlentities($page); ?></span></li>
-    <?php $__FOR_START_31332828__=$page + 1;$__FOR_END_31332828__=$page + 4;for($i=$__FOR_START_31332828__;$i < $__FOR_END_31332828__;$i+=1){ if($i <= $count): ?>
+    <?php $__FOR_START_1322034880__=$page + 1;$__FOR_END_1322034880__=$page + 4;for($i=$__FOR_START_1322034880__;$i < $__FOR_END_1322034880__;$i+=1){ if($i <= $count): ?>
             <li><a href="<?php echo url('mpanel/index/user_manage', ['page'=>$i]); ?>"><?php echo htmlentities($i); ?></a></li>
         <?php endif; } if($count > ($page + 3)): if(($page + 3) != ($count - 1)): ?>
             <li class="uk-disabled"><span>...</span></li>

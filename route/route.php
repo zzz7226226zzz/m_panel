@@ -34,6 +34,8 @@ Route::get('node_list', 'mpanel/index/node_list');
 Route::get('code_list/[:page]', 'mpanel/index/code_list')->pattern(['page'=>'\d+']);
 Route::get('download', 'mpanel/index/download');
 Route::get('code_add', 'mpanel/code/add');
+Route::post('update_code_head', 'mpanel/user/update_code_head');
+Route::get('announcement_list', 'mpanel/index/announcement_list');
 
 return [
 

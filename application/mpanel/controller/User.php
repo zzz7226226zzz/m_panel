@@ -164,15 +164,18 @@ class User extends Controller {
     }
 
     static public function pox_last_ol($user) {
-        return date('Y-m-d h:i:s', Db::table('user_traffic_log')->where('user_id', $user->id)->order('log_time', 'desc')->find()['log_time']);
+        return date('Y-m-d h:i', Db::table('user_traffic_log')->where('user_id', $user->id)->order('log_time', 'desc')->find()['log_time']);
     }
 
     static public function update_code_head() {
-        $user->$this::fast_user();
+        $user = self::fast_user();
         if(!Validate::checkRule(Request::param()['head'],'require|chsAlphaNum|length:1,5')) {
             return '必须为1-5位中英文或数字组合';
         }
-        $user->header = Request::param()['head'];
+        if($user->code_head == Request::param()['head']) {
+            return "LOL";
+        }
+        $user->code_head = Request::param()['head'];
         if($user->save()) {
             return "LOL";
         } else {

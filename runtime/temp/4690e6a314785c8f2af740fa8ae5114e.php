@@ -1,4 +1,4 @@
-<?php /*a:2:{s:85:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\announcement_edit.html";i:1551506351;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1550333866;}*/ ?>
+<?php /*a:2:{s:85:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\announcement_edit.html";i:1551511120;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,11 +34,11 @@
                         <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/user_manage');; ?>">用户管理</a></li>
                     <?php endif; ?>
                     <li class="uk-nav-divider"></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">个人中心</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">节点列表</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">邀请管理</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">软件下载</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">问题反馈</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/index');; ?>">个人中心</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_list');; ?>">节点列表</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/code_list');; ?>">邀请管理</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
+                    <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
                     <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
@@ -46,7 +46,7 @@
         </div>
         <div class="uk-margin"></div>
         <div class="uk-margin-remove-left" uk-grid>
-            <div class="uk-card uk-card-body uk-width-small uk-visible@m">
+            <div class="uk-card uk-width-small uk-visible@m">
                 <ul class="uk-nav-default uk-nav-center" uk-nav>  
                     <?php if($invite == 0): ?>
                         <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/announcement_manage');; ?>">公告管理</a></li>
@@ -54,20 +54,20 @@
                         <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/user_manage');; ?>">用户管理</a></li>
                         <li class="uk-nav-divider"></li>
                     <?php endif; ?>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">个人中心</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">节点列表</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">邀请管理</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">软件下载</a></li>
-                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_manage');; ?>">问题反馈</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/index');; ?>">个人中心</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/node_list');; ?>">节点列表</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/code_list');; ?>">邀请管理</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
+                    <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
                     <li><a class="uk-button uk-button-text" href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
-            <div class="uk-card uk-card-default uk-width-expand">
+            <div class="uk-width-expand uk-padding-remove-left">
                 
     <div class="uk-container uk-container-expand">
         <div class="uk-card">
-            <div class="uk-card-header">
+            <div class="uk-card-header uk-card-default">
                 <h3 class="uk-card-title">公告添加</h3>
             </div>
             <div class="uk-card-body">

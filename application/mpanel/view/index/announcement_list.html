@@ -3,69 +3,20 @@
     <div class="uk-container uk-container-expand">
         <div class="uk-card uk-card-default">
             <div class="uk-card-header">
-                <h3 class="uk-card-title">公告管理</h3>
+                <h3 class="uk-card-title">公告列表</h3>
             </div>
             <div class="uk-card-body">
-                <div>
-                    <a class="uk-button uk-button-default" href="{:url('mpanel/index/announcement_add');}">添加节点</a>
-                </div>
-                <div class="uk-margin"></div>
-                <div class="uk-overflow-auto">
-                    <table class="uk-table uk-table-striped">
-                        <thead>
-                            <tr>
-                                <th class="uk-table-expand">操作</th>
-                                <th>id</th>
-                                <th>标题</th>
-                                <th>公告排序</th>
-                                <th>创建者</th>
-                                <th>创建时间</th>
-                            </tr>
-                            <tbody>
-                                {volist name="announcements" id="announcement"}
-                                    <tr id="announcement_{$announcement.id}">
-                                        <td>
-                                            <a class="uk-button uk-button-primary uk-button-small" href="{:url('mpanel/index/announcement_edit', ['id'=>$announcement.id]);}">编辑</a>
-                                            <button class="uk-button uk-button-danger uk-button-small announcement_delete" announcement_id="{$announcement.id}">删除</button>
-                                        </td>
-                                        <td>{$announcement.id}</td>
-                                        <td>{$announcement.header}</td>
-                                        <td>{$announcement.sort}</td>
-                                        <td>{$announcement.creater}</td>
-                                        <td>{$announcement.createtime}</td>
-                                    </tr>
-                                {/volist}
-                            </tbody>
-                        </thead>
-                    </table>
-                </div>  
-                {include file="component/page" url="mpanel/index/announcement_manage" count="$count" page="$page/}
+                <ul uk-accordion>
+                    {volist name="annos" id="anno"}
+                        <li>
+                            <a class="uk-accordion-title" href="#">{$anno.header}</a>
+                            <div class="uk-accordion-content">
+                                <p>{$anno.text}</p>
+                            </div>
+                        </li>
+                    {/volist}
+                </ul>
             </div>
         </div>
     </div>
-    <script>
-        (function () {
-            $('.announcement_delete').on('click', function() {
-                id = $(this).attr('announcement_id');
-                var request = $.ajax({
-                  url: '{:url("mpanel/announcement/announcement_delete")}',
-                  method: 'POST',
-                  data: {id: id},
-                  dataType: 'html'
-                });
-                
-                request.done(function(msg) {
-                    if(msg == '"LOL"') {
-                        $('#announcement_' + id).remove();
-                    } else {
-                        write_alert(msg);
-                    }
-                });
-                 
-                request.fail(function(jqXHR, textStatus) {
-                    write_alert('Request failed: ' + textStatus);
-                });
-            });
-        }());
-    </script>
 {/block}

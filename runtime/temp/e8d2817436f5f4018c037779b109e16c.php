@@ -1,4 +1,4 @@
-<?php /*a:2:{s:77:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\node_list.html";i:1551528060;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;}*/ ?>
+<?php /*a:2:{s:77:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\node_list.html";i:1551546602;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -65,12 +65,6 @@
             </div>
             <div class="uk-width-expand uk-padding-remove-left">
                 
-    <style>
-        .qrcode {
-            width:180px;
-            height:180px;
-        } 
-    </style>
     <div class="uk-container uk-container-expand">
         <div class="uk-card uk-card-default">
             
