@@ -19,7 +19,7 @@ return [
     'traffic_rate' => '1',
     //端口池
     'port_min' => 10000,
-    'port_max' => 10000,
+    'port_max' => 20000,
     //每月默认流量
     'transfer_enable' => '50GB',
 ];

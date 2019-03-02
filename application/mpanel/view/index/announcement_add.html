@@ -1,0 +1,68 @@
+{extend name="index/base" /}
+{block name="main"}
+    <div class="uk-container uk-container-expand">
+        <div class="uk-card">
+            <div class="uk-card-header uk-card-default">
+                <h3 class="uk-card-title">公告添加</h3>
+            </div>
+            <div class="uk-card-body">
+                <div class="uk-form-horizontal uk-margin-large">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">公告头</label><span class="uk-label uk-label-danger form_label" id="header_label"></span>
+                        <input class="uk-input" type="text" name="header" placeholder="标题文字" id="header">
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">公告内容</label><span class="uk-label uk-label-danger form_label" id="text_label"></span>
+                        <textarea class="uk-textarea" rows="5" placeholder="公告内容" name="text" id="text"></textarea>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">公告排序</label><span class="uk-label uk-label-danger" id="sort_label"></span>
+                        <input class="uk-input" type="num" name="sort" placeholder="前台显示顺序，0-99的数字，默认为0" id="sort">
+                    </div>
+                    <div class="uk-card-footer">
+                        <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
+                            <div>
+                                <button class="uk-button uk-button-default" id="add">添加</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            $('#add').on('click', function() {
+                var header = $('#header').val();
+                var text = $('#text').val();
+                var sort = $('#sort').val();
+                $(".form_label").html("");
+                var request = $.ajax({
+                url: '{:url("mpanel/announcement/update");}',
+                method: 'POST',
+                data: {header: header, text: text, sort: sort},
+                dataType: 'html'
+                });
+                
+                request.done(function(msg) {
+                    if(msg =='"LOL"') {
+                        window.location.href="{:url('mpanel/index/announcement_manage');}"; 
+                    } else {
+                        msg = $.parseJSON(msg);
+                        if(msg instanceof Array) {
+                            msg.forEach(function(e) {
+                                $("#" + e['key'] + "_label").html(e['error']);
+                            });
+                        } else {
+                            write_alert('Request failed: '+ textStatus);
+                        }
+                    }
+                });
+                
+                request.fail(function(jqXHR, textStatus) {
+                    write_alert('Request failed: '+ textStatus);
+                });
+            });
+        }());
+    </script>
+{/block}

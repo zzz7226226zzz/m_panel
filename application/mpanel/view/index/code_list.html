@@ -1,0 +1,95 @@
+{extend name="index/base" /}
+{block name="main"}
+    <div class="uk-container uk-container-expand">
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <h3 class="uk-card-title">邀请码管理</h3>
+            </div>
+            <div class="uk-card-body">
+                <button class="uk-button uk-button-default" id="code_add">创建邀请码</button>
+                <br /><br />
+                <button class="uk-button uk-button-default" id="update_code_head">修改邀请码头</button>
+                <a class="uk-link-muted">现在头部：<span id="now_code_head">{$user.code_head}</span></a>
+                <div class="uk-margin"></div>
+                <div class="uk-overflow-auto">
+                    <table class="uk-table uk-table-striped">
+                        <thead>
+                            <tr>
+                                <th class="uk-table-expand">操作</th>
+                                <th>邀请码</th>
+                                <th>创建时间</th>
+                                <th>状态</th>
+                                <th>被邀请人</th>
+                            </tr>
+                            <tbody>
+                                {volist name="codes" id="code"}
+                                    <tr id="code_{$code.id}">
+                                        <td>
+                                            <button class="uk-button uk-button-danger uk-button-small code_delete" code_id="{$code.id}">删除</button>
+                                        </td>
+                                        <td>{$code.code}</td>
+                                        <td>{$code.time}</td>
+                                        <td>
+                                            {switch $code.enable}
+                                                {case 0}已用{/case}
+                                                {case 1}未用{/case}
+                                            {/switch}
+                                        </td>
+                                        <td>{$code.used}</td>
+                                    </tr>
+                                {/volist}
+                            </tbody>
+                        </thead>
+                    </table>
+                </div>  
+                {include file="component/page" url="mpanel/index/code_manage" count="$count" page="$page/}
+            </div>
+            <br />
+        </div>
+    </div>
+    <script>
+        (function () {
+            $('.code_delete').on('click', function() {
+                id = $(this).attr('code_id');
+                var request = $.ajax({
+                  url: '{:url("mpanel/code/code_delete")}',
+                  method: 'POST',
+                  data: {id: id},
+                  dataType: 'html'
+                });
+                
+                request.done(function(msg) {
+                    if(msg == '"LOL"') {
+                        $('#code_' + id).remove();
+                    } else {
+                        write_alert(msg);
+                    }
+                });
+                 
+                request.fail(function(jqXHR, textStatus) {
+                    write_alert('Request failed: ' + textStatus);
+                });
+            });
+
+            $('#code_add').on('click', function() {
+                var request = $.ajax({
+                  url: '{:url("mpanel/code/add")}',
+                  method: 'GET',
+                  dataType: 'html'
+                });
+                
+                request.done(function(msg) {
+                    if(msg == '"LOL"') {
+                        location.reload();
+                    } else {
+                        write_alert(msg);
+                    }
+                });
+                 
+                request.fail(function(jqXHR, textStatus) {
+                    write_alert('Request failed: ' + textStatus);
+                });
+            });
+        }());
+    </script>
+{/block}

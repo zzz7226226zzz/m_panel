@@ -1,14 +1,15 @@
+<?php /*a:1:{s:73:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\user\signup.html";i:1551526919;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Sign up</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="__PUBLIC__/css/uikit.min.css" />
-        <script src="__PUBLIC__/js/jquery.min.js"></script>
-        <script src="__PUBLIC__/js/uikit.min.js"></script>
-        <script src="__PUBLIC__/js/uikit-icons.min.js"></script>
-        <script src="__PUBLIC__/js/common.js"></script>
+        <link rel="stylesheet" href="/site/public/css/uikit.min.css" />
+        <script src="/site/public/js/jquery.min.js"></script>
+        <script src="/site/public/js/uikit.min.js"></script>
+        <script src="/site/public/js/uikit-icons.min.js"></script>
+        <script src="/site/public/js/common.js"></script>
     </head>
     <body>
         <div class="uk-position-center" uk-grid>
@@ -42,7 +43,7 @@
                 var repassword = $( '#repassword' ).val();
                 var code = $( '#code' ).val();
                 var request = $.ajax({
-                  url: '{:url("mpanel/user/register");}',
+                  url: '<?php echo url("mpanel/user/register");; ?>',
                   method: 'POST',
                   data: {username: username, password: password, repassword: repassword, code: code},
                   dataType: 'html'
@@ -50,7 +51,7 @@
                 
                 request.done(function(msg) {
                     if(msg == '"LOL"') {
-                        window.location.href="{:url('mpanel/index/index');}"; 
+                        window.location.href="<?php echo url('mpanel/index/index');; ?>"; 
                     } else {
                         write_alert(msg);
                     }

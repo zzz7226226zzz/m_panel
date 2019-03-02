@@ -3,45 +3,45 @@
     <div class="uk-container uk-container-expand">
         <div class="uk-card uk-card-default">
             <div class="uk-card-header">
-                <h3 class="uk-card-title">节点添加</h3>
+                <h3 class="uk-card-title">节点编辑</h3>
             </div>
             <div class="uk-card-body">
                 <div class="uk-form-horizontal uk-margin-large">
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">节点名称</label><span class="uk-label uk-label-danger form_label" id="name_label"></span>
-                        <input class="uk-input" type="text" name="name" placeholder="例：美国节点1" id="name">
+                        <input class="uk-input" type="text" name="name" placeholder="例：美国节点1" id="name" value="{$node.name}">
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">节点地址</label><span class="uk-label uk-label-danger form_label" id="server_label"></span>
-                        <input class="uk-input" type="text" name="server" placeholder="域名或ip" id="server">
+                        <input class="uk-input" type="text" name="server" placeholder="域名或ip" id="server" value="{$node.server}">
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">节点ip</label><span class="uk-label uk-label-danger form_label" id="ip_label"></span>
-                        <input class="uk-input" type="text" name="ip" placeholder="不填则自动获取" id="ip">
+                        <input class="uk-input" type="text" name="ip" placeholder="不填则自动获取" id="ip" value="{$node.ip}">
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">节点介绍</label><span class="uk-label uk-label-danger form_label" id="info_label"></span>
-                        <input class="uk-input" type="text" name="info" placeholder="节点信息描述" id="info">
+                        <input class="uk-input" type="text" name="info" placeholder="节点信息描述" id="info" value="{$node.info}">
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">节点状态</label><span class="uk-label uk-label-danger form_label" id="enable_label"></span>
                         <div class="uk-form-controls uk-form-controls-text">
-                            <label><input class="uk-radio" type="radio" value="1" name="enable" checked="true">启用</label><br>
-                            <label><input class="uk-radio" type="radio" value="0" name="enable">关闭</label>
+                            <label><input class="uk-radio" type="radio" value="1" name="enable" {eq name="node.enable" value="1"}checked="true"{/eq}>启用</label><br>
+                            <label><input class="uk-radio" type="radio" value="0" name="enable" {eq name="node.enable" value="0"}checked="true"{/eq}>关闭</label>
                         </div>
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">流量比率</label><span class="uk-label uk-label-danger" id="traffic_rate_label"></span>
-                        <input class="uk-input" type="num" name="traffic_rate" placeholder="用户实际使用流量与服务器统计流量的比例，默认为1" id="traffic_rate">
+                        <input class="uk-input" type="num" name="traffic_rate" placeholder="用户实际使用流量与服务器统计流量的比例，默认为1" id="traffic_rate" value="{$node.traffic_rate}">
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">节点排序</label><span class="uk-label uk-label-danger" id="sort_label"></span>
-                        <input class="uk-input" type="num" name="sort" placeholder="前台显示顺序，0-99的数字，默认为0" id="sort">
+                        <input class="uk-input" type="num" name="sort" placeholder="前台显示顺序，0-99的数字，默认为0" id="sort" value="{$node.sort}">
                     </div>
                     <div class="uk-card-footer">
                         <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
                             <div>
-                                <button class="uk-button uk-button-default" id="add">添加</button>
+                                <button class="uk-button uk-button-default" id="edit">修改</button>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
     </div>
     <script>
         (function () {
-            $('#add').on('click', function() {
+            $('#edit').on('click', function() {
                 var name = $('#name').val();
                 var server = $('#server').val();
                 var ip = $('#ip').val();
@@ -63,7 +63,7 @@
                 var request = $.ajax({
                 url: '{:url("mpanel/node/update");}',
                 method: 'POST',
-                data: {name: name, server: server, ip: ip, info: info, enable: enable, traffic_rate: traffic_rate, sort: sort},
+                data: {id: {$node.id}, name: name, server: server, ip: ip, info: info, enable: enable, traffic_rate: traffic_rate, sort: sort},
                 dataType: 'html'
                 });
                 

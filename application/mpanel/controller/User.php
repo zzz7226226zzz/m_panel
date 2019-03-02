@@ -1,5 +1,6 @@
 <?php
 namespace app\mpanel\controller;
+use think\Db;
 use think\Controller;
 use think\facade\Request;
 use think\facade\Validate;
@@ -39,16 +40,19 @@ class User extends Controller {
         if(UserModel::where('name', Request::param()['username'])->find() != NULL) {
             return 'USERNAME: ALREADY EXISTS';
         }
-        if(!Validate::checkRule(Request::param()['username'],'require|alphaDash|length:1,25')) {
+        if(!Validate::checkRule(Request::param()['username'],'require|chsAlphaNum|length:1,25')) {
             return 'USERNAME: INCORRECT CHARACTERS';
         }
         $user->name = Request::param()['username'];
-        if(!Validate::checkRule(Request::param()['password'],'require|alphaDash|length:1,25')) {
+        if(!Validate::checkRule(Request::param()['password'],'require|chsAlphaNum|length:1,25')) {
             return 'PASSWORD: INCORRECT CHARACTERS';
         }
         $user->pass = password_hash(Request::param()['password'], PASSWORD_BCRYPT);
         $user->passwd = Tools::rand_string(6);
-        $user->port = rand(config('mppdef.port_min'), config('mppdef.port_max'));
+        do {
+            $port = rand(config('mppdef.port_min'), config('mppdef.port_max'));
+        } while(!empty(UserModel::where('port', $port)->find()));
+        $user->port = $port;
         $user->transfer_enable = Tools::string_to_size(config('mppdef.transfer_enable'));
         $user->method = config('mppdef.method');
         $user->protocol = config('mppdef.protocol');
@@ -57,7 +61,7 @@ class User extends Controller {
         $user->obfs_param = config('mppdef.obfs_param');
         $user->code_head = config('mppdef.code_head');
         $user->reg_date = time();
-        $user->reg_ip = Tools::real_ip();;
+        $user->reg_ip = ip2long(Tools::real_ip());
         $user->reg_code = $code->code;
         $user->reg_by = $code->author;
         if($user->save()) {
@@ -83,5 +87,96 @@ class User extends Controller {
 
     static public function fast_user() {
         return UserModel::where('id', Session::get('user'))->find();
+    }
+
+    static public function all() {
+        return UserModel::where(1, 1);
+    }    
+    
+    static public function one($id) {
+        return UserModel::get($id);
+    }
+
+    public function back_update() {
+        $error = [];
+        if(UserModel::where('id', Request::param()['id'])->find()) {
+            $user = UserModel::get(Request::param()['id']);
+        } else {
+            return '错误的用户id';
+        }
+        if(UserModel::where('port', Request::param()['port'])->find() && Request::param()['port'] != $user->port) {
+            $error[] = ['key'=>'port', 'error'=>'该端口已被使用'];
+        } else {
+            $valistr = 'require|number|Between:' . config('mppdef.port_min') . ',' . config('mppdef.port_max');
+            if(Validate::checkRule(Request::param()['port'], $valistr)) {
+                $user->port = Request::param()['port'];
+            } else {
+                $error[] = ['key'=>'port', 'error'=>'端口必须为' . config('mppdef.port_min') . '到' . config('mppdef.port_max') . '之间的数字'];
+            }
+        }
+        if(!Validate::checkRule(Request::param()['passwd'],'require|chsAlphaNum|length:1,25')) {
+            $error[] = ['key'=>'passwd', 'error'=>'必须为1-25位中英文或数字组合'];
+        } else {
+            $user->passwd = Request::param()['passwd'];
+        }
+        $user->method = Request::param()['method'];
+        $user->protocol = Request::param()['protocol'];
+        $user->protocol_param = Request::param()['protocol_param'];
+        $user->obfs = Request::param()['obfs'];
+        $user->obfs_param = Request::param()['obfs_param'];
+        if(!Validate::checkRule(Request::param()['enable'],'number|Between:0,1')) {
+            $error[] = ['key'=>'enable', 'error'=>'必须一个选择状态'];
+        } else {
+            $user->enable = Request::param()['enable'];
+        }
+        if(count($error) > 0) {
+            return $error;
+        }
+        if($user->save()) {
+            return "LOL";
+        } else {
+            return '未知错误,请联系开发人员';
+        }
+    }
+
+    public function user_delete() {
+        $user = NULL;
+
+        if(Request::has('id','post')) {
+            if(UserModel::where('id', Request::param()['id'])->find()) {
+                $user = UserModel::get(Request::param()['id']);
+            } else {
+                return '错误的用户id';
+            }
+        } else {
+            return '需要给定用户id';
+        }
+
+        if($user->delete() && Code::delete_with_user($user->reg_code)) {
+            return 'LOL';
+        } else {
+            return '未知错误,请联系开发人员';
+        }
+    }
+
+    static public function find_used($code) {
+        return UserModel::where('reg_code', $code)->find();
+    }
+
+    static public function pox_last_ol($user) {
+        return date('Y-m-d h:i:s', Db::table('user_traffic_log')->where('user_id', $user->id)->order('log_time', 'desc')->find()['log_time']);
+    }
+
+    static public function update_code_head() {
+        $user->$this::fast_user();
+        if(!Validate::checkRule(Request::param()['head'],'require|chsAlphaNum|length:1,5')) {
+            return '必须为1-5位中英文或数字组合';
+        }
+        $user->header = Request::param()['head'];
+        if($user->save()) {
+            return "LOL";
+        } else {
+            return '未知错误,请联系开发人员';
+        }
     }
 }

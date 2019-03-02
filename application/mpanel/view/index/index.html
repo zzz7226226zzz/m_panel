@@ -1,1 +1,51 @@
 {extend name="index/base" /}
+{block name="main"}
+    <div class="uk-container uk-container-expand">
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <h3 class="uk-card-title">公告</h3>
+            </div>
+            <div class="uk-card-body">
+                <ul uk-accordion>
+                    {volist name="annos" id="anno"}
+                        <li>
+                            <a class="uk-accordion-title" href="#">{$anno.header}</a>
+                            <div class="uk-accordion-content">
+                                <p>{$anno.text}</p>
+                            </div>
+                        </li>
+                    {/volist}
+                </ul>
+            </div>
+            <div class="uk-card-footer">
+                <a href="#" class="uk-button uk-button-text" >更多公告</a>
+            </div>
+        </div>
+        <br />
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <h3 class="uk-card-title">流量</h3>
+            </div>
+            <div class="uk-card-body">
+                <p>本月：{$user.ds}&nbsp;&nbsp;&nbsp;总流量:{$user.transfer_enables}</p>
+                <progress class="uk-progress" value="{$user.d}" max="{$user.transfer_enable}"></progress>
+            </div>
+        </div>
+        <br />
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <h3 class="uk-card-title">账号情况</h3>
+            </div>
+            <div class="uk-card-body">
+                <div class="uk-grid-small" uk-grid>
+                    <div class="uk-width-expand" uk-leader>可用激活码数量</div>
+                    <div>{$user.enable_code}</div>
+                </div>
+                <div class="uk-grid-small" uk-grid>
+                    <div class="uk-width-expand" uk-leader>上次代理在线时间</div>
+                    <div>{$user.pox_last_ol}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}

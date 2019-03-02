@@ -1,0 +1,32 @@
+
+<ul class="uk-pagination uk-flex-right">
+    {if $page > 1}
+        <li><a href="{:url('[url]', ['page'=>($page - 1)])}"><span uk-pagination-previous></span></a></li>
+    {/if}
+    {if ($page - 3) > 1}
+        <li><a href="{:url('[url]', ['page'=>1])}">1</a></li>
+        {if ($page - 3) != 2}
+            <li class="uk-disabled"><span>...</span></li>
+        {/if}
+    {/if}
+    {for start="$page - 3" end="$page"}
+        {if $i > 0}
+            <li><a href="{:url('[url]', ['page'=>$i])}">{$i}</a></li>
+        {/if}
+    {/for}
+    <li class="uk-active"><span>{$page}</span></li>
+    {for start="$page + 1" end="$page + 4"}
+        {if $i <= $count}
+            <li><a href="{:url('[url]', ['page'=>$i])}">{$i}</a></li>
+        {/if}
+    {/for}
+    {if $count > ($page + 3)}
+        {if ($page + 3) != ($count - 1)}
+            <li class="uk-disabled"><span>...</span></li>
+        {/if}
+        <li><a href="{:url('[url]', ['page'=>$count])}">{$count}</a></li>
+    {/if}
+    {if $page < $count}
+        <li><a href="{:url('[url]', ['page'=>($page + 1)])}"><span uk-pagination-next></span></a></li>
+    {/if}
+</ul>

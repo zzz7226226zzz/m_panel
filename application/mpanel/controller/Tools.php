@@ -5,13 +5,13 @@ class Tools{
     static public function size_to_string($size) {
         $string = '0KB';
         if($size >= pow(1024, 4)) {
-            $string = round($size, pow(1024, 4)) . 'TB';
+            $string = round($size / pow(1024, 4)) . 'TB';
         } else if($size >= pow(1024, 3)) {
-            $string = round($size, pow(1024, 3)) . 'GB';
+            $string = round($size / pow(1024, 3)) . 'GB';
         } else if($size >= pow(1024, 2)) {
-            $string = round($size, pow(1024, 2)) . 'MB';
+            $string = round($size / pow(1024, 2)) . 'MB';
         } else if($size >= 1024) {
-            $string = round($size, 1024) . 'KB';
+            $string = round($size / 1024) . 'KB';
         }
         return $string;
     }
@@ -98,4 +98,12 @@ class Tools{
        
         return $realip;  
     }
+
+    static function base64url_encode($data) { 
+        return rtrim(strtr(base64_encode($data), '+/', '-_'), '='); 
+    } 
+    
+    static function base64url_decode($data) { 
+        return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT)); 
+    } 
 }

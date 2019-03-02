@@ -1,7 +1,7 @@
 {extend name="index/base" /}
 {block name="main"}
     <div class="uk-container uk-container-expand">
-        <div class="uk-card">
+        <div class="uk-card uk-card-default">
             <div class="uk-card-header">
                 <h3 class="uk-card-title">节点管理</h3>
             </div>
@@ -9,7 +9,70 @@
                 <div>
                     <a class="uk-button uk-button-default" href="{:url('mpanel/index/node_add');}">添加节点</a>
                 </div>
+                <div class="uk-margin"></div>
+                <div class="uk-overflow-auto">
+                    <table class="uk-table uk-table-striped">
+                        <thead>
+                            <tr>
+                                <th class="uk-table-expand">操作</th>
+                                <th>id</th>
+                                <th>名称</th>
+                                <th>节点地址</th>
+                                <th>节点IP</th>
+                                <th>流量比率</th>
+                                <th>状态</th>
+                            </tr>
+                            <tbody>
+                                {volist name="nodes" id="node"}
+                                    <tr id="node_{$node.id}">
+                                        <td>
+                                            <a class="uk-button uk-button-primary uk-button-small" href="{:url('mpanel/index/node_edit', ['id'=>$node.id]);}">编辑</a>
+                                            <button class="uk-button uk-button-danger uk-button-small node_delete" node_id="{$node.id}">删除</button>
+                                        </td>
+                                        <td>{$node.id}</td>
+                                        <td>{$node.name}</td>
+                                        <td>{$node.server}</td>
+                                        <td>{$node.ip}</td>
+                                        <td>{$node.traffic_rate}</td>
+                                        <td>
+                                            {switch $node.enable}
+                                                {case 0}关闭{/case}
+                                                {case 1}启用{/case}
+                                            {/switch}
+                                        </td>
+                                    </tr>
+                                {/volist}
+                            </tbody>
+                        </thead>
+                    </table>
+                </div>  
+                {include file="component/page" url="mpanel/index/node_manage" count="$count" page="$page/}
             </div>
         </div>
     </div>
+    <script>
+        (function () {
+            $('.node_delete').on('click', function() {
+                id = $(this).attr('node_id');
+                var request = $.ajax({
+                  url: '{:url("mpanel/node/node_delete")}',
+                  method: 'POST',
+                  data: {id: id},
+                  dataType: 'html'
+                });
+                
+                request.done(function(msg) {
+                    if(msg == '"LOL"') {
+                        $('#node_' + id).remove();
+                    } else {
+                        write_alert(msg);
+                    }
+                });
+                 
+                request.fail(function(jqXHR, textStatus) {
+                    write_alert('Request failed: ' + textStatus);
+                });
+            });
+        }());
+    </script>
 {/block}

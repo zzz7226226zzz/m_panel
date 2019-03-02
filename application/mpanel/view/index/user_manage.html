@@ -1,0 +1,95 @@
+{extend name="index/base" /}
+{block name="main"}
+    <div class="uk-container uk-container-expand">
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <h3 class="uk-card-title">用户管理</h3>
+            </div>
+            <div class="uk-card-body">
+                <div class="uk-margin"></div>
+                <div class="uk-overflow-auto">
+                    <table class="uk-table uk-table-striped">
+                        <thead>
+                            <tr>
+                                <th class="uk-table-expand">操作</th>
+                                <th>id</th>
+                                <th>用户名</th>
+                                <th>端口</th>
+                                <th>已用流量</th>
+                                <th>总流量</th>
+                                <th class="uk-table-expand">加密方式</th>
+                                <th class="uk-table-expand">链接协议</th>
+                                <th class="uk-table-expand">链接参数</th>
+                                <th class="uk-table-expand">混淆方式</th>
+                                <th class="uk-table-expand">混淆参数</th>
+                                <th class="uk-table-expand">状态</th>
+                                <th class="uk-table-expand">最近使用日期</th>
+                                <th>注册时间</th>
+                                <th>注册IP</th>
+                                <th class="uk-table-expand">邀请码</th>
+                                <th class="uk-table-expand">邀请人id</th>
+                            </tr>
+                            <tbody>
+                                {volist name="users" id="user"}
+                                    <tr id="user_{$user.id}">
+                                        <td>
+                                            <a class="uk-button uk-button-primary uk-button-small" href="{:url('mpanel/index/user_edit', ['id'=>$user.id]);}">编辑</a>
+                                            <button class="uk-button uk-button-danger uk-button-small user_delete" user_id="{$user.id}">删除</button>
+                                        </td>
+                                        <td>{$user.id}</td>
+                                        <td>{$user.name}</td>
+                                        <td>{$user.port}</td>
+                                        <td>{:app\\mpanel\\controller\\Tools::size_to_string($user.u + $user.d)}</td>
+                                        <td>{:app\\mpanel\\controller\\Tools::size_to_string($user.transfer_enable)}</td>
+                                        <td>{$user.method}</td>
+                                        <td>{$user.protocol}</td>
+                                        <td>{$user.protocol_param}</td>
+                                        <td>{$user.obfs}</td>
+                                        <td>{$user.obfs_param}</td>
+                                        <td>
+                                            {switch $user.enable}
+                                                {case 0}关闭{/case}
+                                                {case 1}启用{/case}
+                                            {/switch}
+                                        </td>
+                                        <td>{$user.t|date='Y-m-d H:i'}</td>
+                                        <td>{$user.reg_date}</td>
+                                        <td>{:long2ip($user.reg_ip)}</td>
+                                        <td>{$user.reg_code}</td>
+                                        <td>{$user.reg_by}</td>
+                                    </tr>
+                                {/volist}
+                            </tbody>
+                        </thead>
+                    </table>
+                </div>  
+                {include file="component/page" url="mpanel/index/user_manage" count="$count" page="$page/}
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            $('.user_delete').on('click', function() {
+                id = $(this).attr('user_id');
+                var request = $.ajax({
+                  url: '{:url("mpanel/user/user_delete")}',
+                  method: 'POST',
+                  data: {id: id},
+                  dataType: 'html'
+                });
+                
+                request.done(function(msg) {
+                    if(msg == '"LOL"') {
+                        $('#user_' + id).remove();
+                    } else {
+                        write_alert(msg);
+                    }
+                });
+                 
+                request.fail(function(jqXHR, textStatus) {
+                    write_alert('Request failed: ' + textStatus);
+                });
+            });
+        }());
+    </script>
+{/block}

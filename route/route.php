@@ -16,11 +16,24 @@ Route::get('think', function () {
 Route::get('index', 'mpanel/index/index');
 Route::get('login', 'mpanel/user/login');
 Route::get('signup', 'mpanel/user/signup');
-Route::get('node_manage', 'mpanel/index/node_manage');
-Route::get('node_add', 'mpanel/index/node_add');
-Route::get('announcement_manage', 'mpanel/index/announcement_manage');
 Route::post('register', 'mpanel/user/register');
 Route::post('verify_account', 'mpanel/user/verify_account');
+Route::get('node_manage/[:page]', 'mpanel/index/node_manage')->pattern(['page'=>'\d+']);
+Route::get('node_add', 'mpanel/index/node_add');
+Route::post('node_add_post', 'mpanel/node/add');
+Route::get('node_edit/:id', 'mpanel/index/node_edit')->pattern(['id'=>'\d+']);
+Route::post('node_delete', 'mpanel/node/node_delete');
+Route::get('user_manage/[:page]', 'mpanel/index/user_manage')->pattern(['page'=>'\d+']);
+Route::get('user_edit/[:id]', 'mpanel/index/user_edit')->pattern(['page'=>'\d+']);
+Route::post('user_back_update', 'mpanel/user/back_update');
+Route::get('announcement_manage', 'mpanel/index/announcement_manage');
+Route::get('announcement_add', 'mpanel/index/announcement_add');
+Route::get('announcement_edit/:id', 'mpanel/index/announcement_edit')->pattern(['id'=>'\d+']);
+Route::post('announcement_update_post', 'mpanel/announcement/update');
+Route::get('node_list', 'mpanel/index/node_list');
+Route::get('code_list/[:page]', 'mpanel/index/code_list')->pattern(['page'=>'\d+']);
+Route::get('download', 'mpanel/index/download');
+Route::get('code_add', 'mpanel/code/add');
 
 return [
 
