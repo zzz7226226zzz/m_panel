@@ -1,6 +1,9 @@
 /.idea
 /.vscode
 /vendor
+/config/app.php
+/config/database.php
+/config/template.php
 *.log
 thinkphp
 .env
