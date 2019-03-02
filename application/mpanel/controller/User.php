@@ -36,9 +36,9 @@ class User extends Controller {
     
     public function register() {
         $user = new UserModel();
-        $user->code = Request::param()['code'];
+        $codenum = Request::param()['code'];
         $code_controller = new Code();
-        $code = $code_controller->validation($user->code);
+        $code = $code_controller->validation($codenum);
         if(empty($code) || !$code->enable) {
            return 'CODE: INVALID CODE';
         }
@@ -67,10 +67,10 @@ class User extends Controller {
         $user->code_head = config('mppdef.code_head');
         $user->reg_date = time();
         $user->reg_ip = ip2long(Tools::real_ip());
-        $user->reg_code = $code->code;
+        $user->reg_code = $codenum;
         $user->reg_by = $code->author;
         if($user->save()) {
-            $code_controller->discard($user->code);
+            $code_controller->discard($codenum);
             $this->set_login($user);
             return 'LOL';
         } else {
@@ -181,6 +181,24 @@ class User extends Controller {
             return "LOL";
         }
         $user->code_head = Request::param()['head'];
+        if($user->save()) {
+            return "LOL";
+        } else {
+            return '未知错误,请联系开发人员';
+        }
+    }
+
+    public function update_pass() {
+        $user = self::fast_user();
+        if(Request::param()['code'] == $user->reg_code) {
+            if(!Validate::checkRule(Request::param()['pass'],'require|chsAlphaNum|length:1,25')) {
+                return '密码必须为1-25位数字与字母组合';
+            }
+            $user->pass = password_hash(Request::param()['pass'], PASSWORD_BCRYPT);
+        } else {
+            return '邀请码错误';
+        }
+        
         if($user->save()) {
             return "LOL";
         } else {

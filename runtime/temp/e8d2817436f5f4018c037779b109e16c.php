@@ -1,4 +1,4 @@
-<?php /*a:2:{s:77:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\node_list.html";i:1551546602;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;}*/ ?>
+<?php /*a:2:{s:77:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\node_list.html";i:1551546602;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551557369;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +40,7 @@
                     <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
                     <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
+                    <li><a href="<?php echo url('mpanel/user/logout');; ?>"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
         </div>
@@ -60,7 +60,7 @@
                     <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
                     <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a class="uk-button uk-button-text" href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/user/logout');; ?>"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
             <div class="uk-width-expand uk-padding-remove-left">

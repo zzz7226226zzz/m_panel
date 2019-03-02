@@ -1,4 +1,4 @@
-<?php /*a:2:{s:73:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\index.html";i:1551551347;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;}*/ ?>
+<?php /*a:2:{s:73:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\index.html";i:1551560143;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551557369;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +40,7 @@
                     <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
                     <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
+                    <li><a href="<?php echo url('mpanel/user/logout');; ?>"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
         </div>
@@ -60,7 +60,7 @@
                     <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
                     <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a class="uk-button uk-button-text" href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/user/logout');; ?>"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
             <div class="uk-width-expand uk-padding-remove-left">
@@ -111,8 +111,63 @@
                     <div><?php echo htmlentities($user['pox_last_ol']); ?></div>
                 </div>
             </div>
+        </div><br />
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <h3 class="uk-card-title">修改密码</h3>
+            </div>
+            <div class="uk-card-body">
+                <p>邀请码是你修改密码时的唯一凭证，请确保你永远有办法获取自己的邀请码</p>
+                <button class="uk-button uk-button-default" uk-toggle="target: #update_password" type="button">修改密码</button>
+                <div id="update_password" class="uk-flex-top" uk-modal>
+                        <div class="uk-modal-dialog  uk-margin-auto-vertical">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">修改</h2>
+                            </div>
+                            <div class="uk-modal-body">
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="邀请码" id="code">
+                                </div>
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="新密码" id="pass">
+                                </div>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary" type="button" id="update_pass">Save</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </div>
-    </div>
+    </div><script>
+            (function () {
+                $('#update_pass').on('click', function() {
+                    code = $('#code').val();
+                    pass = $('#pass').val();
+                    var request = $.ajax({
+                      url: '<?php echo url("mpanel/user/update_pass"); ?>',
+                      method: 'POST',
+                      data: {code: code, pass: pass},
+                      dataType: 'html'
+                    });
+                    
+                    request.done(function(msg) {
+                        if(msg == '"LOL"') {
+                            UIkit.modal('#update_password').hide();
+                            write_alert('修改成功');
+                        } else {
+                            write_alert(msg);
+                        }
+                    });
+                     
+                    request.fail(function(jqXHR, textStatus) {
+                        write_alert('Request failed: ' + textStatus);
+                    });
+                });
+            }());
+        </script>
 
             </div>
         </div>
