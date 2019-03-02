@@ -1,4 +1,4 @@
-<?php /*a:3:{s:77:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\code_list.html";i:1551551562;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551511636;s:76:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\component\page.html";i:1550332029;}*/ ?>
+<?php /*a:3:{s:77:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\code_list.html";i:1551551562;s:72:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\index\base.html";i:1551557369;s:76:"F:\phpstudy\PHPTutorial\WWW\site\application\mpanel\view\component\page.html";i:1550332029;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +40,7 @@
                     <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
                     <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
+                    <li><a href="<?php echo url('mpanel/user/logout');; ?>"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
         </div>
@@ -60,7 +60,7 @@
                     <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/index/download');; ?>">软件下载</a></li>
                     <li><a class="uk-button uk-button-text" href="tencent://Message/?Uin=952257494&websiteName=q-zone.qq.com&Menu=yes">问题反馈</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a class="uk-button uk-button-text" href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
+                    <li><a class="uk-button uk-button-text" href="<?php echo url('mpanel/user/logout');; ?>"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>登出</a></li>
                 </ul>
             </div>
             <div class="uk-width-expand uk-padding-remove-left">
@@ -131,11 +131,11 @@
         <?php if(($page - 3) != 2): ?>
             <li class="uk-disabled"><span>...</span></li>
         <?php endif; ?>
-    <?php endif; $__FOR_START_2050067695__=$page - 3;$__FOR_END_2050067695__=$page;for($i=$__FOR_START_2050067695__;$i < $__FOR_END_2050067695__;$i+=1){ if($i > 0): ?>
+    <?php endif; $__FOR_START_1953593272__=$page - 3;$__FOR_END_1953593272__=$page;for($i=$__FOR_START_1953593272__;$i < $__FOR_END_1953593272__;$i+=1){ if($i > 0): ?>
             <li><a href="<?php echo url('mpanel/index/code_manage', ['page'=>$i]); ?>"><?php echo htmlentities($i); ?></a></li>
         <?php endif; } ?>
     <li class="uk-active"><span><?php echo htmlentities($page); ?></span></li>
-    <?php $__FOR_START_705791077__=$page + 1;$__FOR_END_705791077__=$page + 4;for($i=$__FOR_START_705791077__;$i < $__FOR_END_705791077__;$i+=1){ if($i <= $count): ?>
+    <?php $__FOR_START_65963421__=$page + 1;$__FOR_END_65963421__=$page + 4;for($i=$__FOR_START_65963421__;$i < $__FOR_END_65963421__;$i+=1){ if($i <= $count): ?>
             <li><a href="<?php echo url('mpanel/index/code_manage', ['page'=>$i]); ?>"><?php echo htmlentities($i); ?></a></li>
         <?php endif; } if($count > ($page + 3)): if(($page + 3) != ($count - 1)): ?>
             <li class="uk-disabled"><span>...</span></li>

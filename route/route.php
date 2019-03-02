@@ -18,6 +18,7 @@ Route::get('login', 'mpanel/user/login');
 Route::get('signup', 'mpanel/user/signup');
 Route::post('register', 'mpanel/user/register');
 Route::post('verify_account', 'mpanel/user/verify_account');
+Route::get('logout', 'mpanel/user/logout');
 Route::get('node_manage/[:page]', 'mpanel/index/node_manage')->pattern(['page'=>'\d+']);
 Route::get('node_add', 'mpanel/index/node_add');
 Route::post('node_add_post', 'mpanel/node/add');

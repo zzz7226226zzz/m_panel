@@ -18,6 +18,11 @@ class User extends Controller {
     public function signup() {
         return $this->fetch();
     }
+
+    public function logout() {
+        session(null);
+        return redirect('mpanel/user/login');
+    }
     
     public function verify_account() {
         $user = UserModel::where('name', Request::param()['username'])->find();
