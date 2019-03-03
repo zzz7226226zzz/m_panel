@@ -19,6 +19,6 @@ class monthly extends Task
      */
     protected function execute()
     {
-        Db::name('user')->update(['transfer_enable' => Tools::string_to_size(config('mppdef.transfer_enable'))]);
+        Db::name('user')->update(['u' => 0, 'd'=>0]);
     }
 }
