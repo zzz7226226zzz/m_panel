@@ -24,6 +24,10 @@ class User extends Controller {
         return redirect('mpanel/user/login');
     }
     
+    public function change_password() {
+        return $this->fetch();
+    }
+    
     public function verify_account() {
         $user = UserModel::where('name', Request::param()['username'])->find();
         if($user != NULL && password_verify(Request::param()['password'], $user->pass)) {
@@ -188,16 +192,24 @@ class User extends Controller {
         }
     }
 
-    public function update_pass() {
-        $user = self::fast_user();
-        if(Request::param()['code'] == $user->reg_code) {
-            if(!Validate::checkRule(Request::param()['pass'],'require|chsAlphaNum|length:1,25')) {
-                return '密码必须为1-25位数字与字母组合';
+    public function update_password() {
+        $user = NULL;
+        if(Session::has('name')) {
+            $user = self::fast_user();
+            if(Request::param()['code'] == $user->reg_code) {
+                if(!Validate::checkRule(Request::param()['password'],'require|chsAlphaNum|length:1,25')) {
+                    return '密码必须为1-25位数字与字母组合';
+                }
+            } else {
+                return '邀请码错误';
             }
-            $user->pass = password_hash(Request::param()['pass'], PASSWORD_BCRYPT);
         } else {
-            return '邀请码错误';
+            $user = self::find_used(Request::param()['code']);
+            if(!$user) {
+                return '邀请码错误';
+            }
         }
+        $user->pass = password_hash(Request::param()['password'], PASSWORD_BCRYPT);
         
         if($user->save()) {
             return "LOL";

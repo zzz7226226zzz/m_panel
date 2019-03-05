@@ -1,14 +1,15 @@
+<?php /*a:1:{s:60:"C:\wamp64\www\mpanel\application\mpanel\view\user\login.html";i:1551753323;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>MPP</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="__PUBLIC__/css/uikit.min.css" />
-        <script src="__PUBLIC__/js/jquery.min.js"></script>
-        <script src="__PUBLIC__/js/uikit.min.js"></script>
-        <script src="__PUBLIC__/js/uikit-icons.min.js"></script>
-        <script src="__PUBLIC__/js/common.js"></script>
+        <link rel="stylesheet" href="/site/public/css/uikit.min.css" />
+        <script src="/site/public/js/jquery.min.js"></script>
+        <script src="/site/public/js/uikit.min.js"></script>
+        <script src="/site/public/js/uikit-icons.min.js"></script>
+        <script src="/site/public/js/common.js"></script>
     </head>
     <body>
         <div class="uk-position-center" uk-grid>
@@ -22,7 +23,7 @@
                 </div>
                 <div class="uk-flex uk-flex-right uk-flex-middle uk-grid-small" uk-grid>
                     <div>
-                        <a class="uk-link-muted" href="{:url('mpanel/user/signup');}">Sign up</a>
+                        <a class="uk-link-muted" href="<?php echo url('mpanel/user/signup');; ?>">Sign up</a>
                     </div>
                     <div>
                         <button class="uk-button uk-button-default" id="login">Login</button>
@@ -30,7 +31,7 @@
                 </div>
                 <div class="uk-margin"></div>
                 <div class="uk-flex uk-flex-right">
-                    <a class="uk-link-muted" href="{:url('mpanel/user/change_password');}">Forgot password?</a>
+                    <a class="uk-link-muted" href="<?php echo url('mpanel/user/change_password');; ?>">Forgot password?</a>
                 </div>
             </div>
         </div>
@@ -41,7 +42,7 @@
                 var username = $( '#username' ).val();
                 var password = $( '#password' ).val();
                 var request = $.ajax({
-                  url: '{:url("mpanel/user/verify_account");}',
+                  url: '<?php echo url("mpanel/user/verify_account");; ?>',
                   method: 'POST',
                   data: {username: username, password: password},
                   dataType: 'html'
@@ -49,7 +50,7 @@
                 
                 request.done(function(msg) {
                     if(msg == '"LOL"') {
-                        window.location.href="{:url('mpanel/index/index');}"; 
+                        window.location.href="<?php echo url('mpanel/index/index');; ?>"; 
                     } else {
                         write_alert(msg);
                     }

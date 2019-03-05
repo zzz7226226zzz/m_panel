@@ -65,7 +65,7 @@
                                     <input class="uk-input" type="text" placeholder="邀请码" id="code">
                                 </div>
                                 <div class="uk-margin">
-                                    <input class="uk-input" type="password" placeholder="新密码" id="pass">
+                                    <input class="uk-input" type="password" placeholder="新密码" id="password">
                                 </div>
                             </div>
                             <div class="uk-modal-footer uk-text-right">
@@ -80,11 +80,11 @@
             (function () {
                 $('#update_pass').on('click', function() {
                     code = $('#code').val();
-                    pass = $('#pass').val();
+                    password = $('#password').val();
                     var request = $.ajax({
-                      url: '{:url("mpanel/user/update_pass")}',
+                      url: '{:url("mpanel/user/update_password")}',
                       method: 'POST',
-                      data: {code: code, pass: pass},
+                      data: {code: code, password: password},
                       dataType: 'html'
                     });
                     
