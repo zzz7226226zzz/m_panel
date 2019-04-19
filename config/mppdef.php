@@ -22,5 +22,9 @@ return [
     'port_max' => 20000,
     //每月默认流量
     'transfer_enable' => '50GB',
+    //ASF地址
+    'ASF_ip' => '127.0.0.1',
+    //ASF密码
+    'ASF_pass' => 'sbbbb'
 ];
 ?>

@@ -1,15 +1,15 @@
-<?php /*a:2:{s:61:"C:\wamp64\www\mpanel\application\mpanel\view\index\index.html";i:1551754112;s:60:"C:\wamp64\www\mpanel\application\mpanel\view\index\base.html";i:1551747718;}*/ ?>
+<?php /*a:2:{s:61:"C:\wamp64\www\mpanel\application\mpanel\view\index\index.html";i:1553825745;s:60:"C:\wamp64\www\mpanel\application\mpanel\view\index\base.html";i:1553825745;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title><?php echo config('mppdef.sitename');; ?></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/site/public/css/uikit.min.css" />
-        <script src="/site/public/js/jquery.min.js"></script>
-        <script src="/site/public/js/uikit.min.js"></script>
-        <script src="/site/public/js/uikit-icons.min.js"></script>
-        <script src="/site/public/js/common.js"></script>
+        <link rel="stylesheet" href="/mpanel/public/css/uikit.min.css" />
+        <script src="/mpanel/public/js/jquery.min.js"></script>
+        <script src="/mpanel/public/js/uikit.min.js"></script>
+        <script src="/mpanel/public/js/uikit-icons.min.js"></script>
+        <script src="/mpanel/public/js/common.js"></script>
     </head>
     <body>
         <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">

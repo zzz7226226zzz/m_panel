@@ -1,15 +1,15 @@
-<?php /*a:1:{s:60:"C:\wamp64\www\mpanel\application\mpanel\view\user\login.html";i:1551753323;}*/ ?>
+<?php /*a:1:{s:60:"C:\wamp64\www\mpanel\application\mpanel\view\user\login.html";i:1553825745;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>MPP</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/site/public/css/uikit.min.css" />
-        <script src="/site/public/js/jquery.min.js"></script>
-        <script src="/site/public/js/uikit.min.js"></script>
-        <script src="/site/public/js/uikit-icons.min.js"></script>
-        <script src="/site/public/js/common.js"></script>
+        <link rel="stylesheet" href="/mpanel/public/css/uikit.min.css" />
+        <script src="/mpanel/public/js/jquery.min.js"></script>
+        <script src="/mpanel/public/js/uikit.min.js"></script>
+        <script src="/mpanel/public/js/uikit-icons.min.js"></script>
+        <script src="/mpanel/public/js/common.js"></script>
     </head>
     <body>
         <div class="uk-position-center" uk-grid>

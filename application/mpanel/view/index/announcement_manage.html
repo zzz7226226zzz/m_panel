@@ -7,7 +7,7 @@
             </div>
             <div class="uk-card-body">
                 <div>
-                    <a class="uk-button uk-button-default" href="{:url('mpanel/index/announcement_add');}">添加节点</a>
+                    <a class="uk-button uk-button-default" href="{:url('mpanel/index/announcement_add');}">添加公告</a>
                 </div>
                 <div class="uk-margin"></div>
                 <div class="uk-overflow-auto">
@@ -32,7 +32,7 @@
                                         <td>{$announcement.header}</td>
                                         <td>{$announcement.sort}</td>
                                         <td>{$announcement.creater}</td>
-                                        <td>{$announcement.createtime}</td>
+                                        <td>{$announcement.createtime|date='Y-m-d H:i'}</td>
                                     </tr>
                                 {/volist}
                             </tbody>

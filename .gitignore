@@ -4,6 +4,7 @@
 /config/app.php
 /config/database.php
 /config/template.php
+/asf
 *.log
 thinkphp
 .env
